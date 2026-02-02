@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', init);
 async function init() {
   allProjects = await fetchProjects();
   document.getElementById('loading').classList.add('d-none');
-  renderProjects(allProjects);
+  applyFilters();
 
   document.getElementById('searchInput').addEventListener('input', function () {
     clearTimeout(debounceTimer);
@@ -14,11 +14,13 @@ async function init() {
   });
 
   document.getElementById('statusFilter').addEventListener('change', applyFilters);
+  document.getElementById('sortOrder').addEventListener('change', applyFilters);
 }
 
 function applyFilters() {
   var query = document.getElementById('searchInput').value;
   var statusValue = document.getElementById('statusFilter').value;
+  var sortValue = document.getElementById('sortOrder').value;
 
   var filtered = searchProjects(allProjects, query);
 
@@ -28,7 +30,24 @@ function applyFilters() {
     });
   }
 
+  filtered = sortProjects(filtered, sortValue);
   renderProjects(filtered);
+}
+
+function sortProjects(projects, order) {
+  var sorted = projects.slice();
+  if (order === 'name-asc') {
+    sorted.sort(function (a, b) { return a.name.localeCompare(b.name, 'de'); });
+  } else if (order === 'name-desc') {
+    sorted.sort(function (a, b) { return b.name.localeCompare(a.name, 'de'); });
+  } else if (order === 'status') {
+    var rank = { aktiv: 0, abgeschlossen: 1, sonstige: 2, '': 3 };
+    sorted.sort(function (a, b) {
+      var diff = rank[normalizeStatus(a.status)] - rank[normalizeStatus(b.status)];
+      return diff !== 0 ? diff : a.name.localeCompare(b.name, 'de');
+    });
+  }
+  return sorted;
 }
 
 function normalizeStatus(raw) {
@@ -149,13 +168,14 @@ function showDetail(index) {
 function getVisibleProjects() {
   var query = document.getElementById('searchInput').value;
   var statusValue = document.getElementById('statusFilter').value;
+  var sortValue = document.getElementById('sortOrder').value;
   var filtered = searchProjects(allProjects, query);
   if (statusValue) {
     filtered = filtered.filter(function (p) {
       return normalizeStatus(p.status) === statusValue;
     });
   }
-  return filtered;
+  return sortProjects(filtered, sortValue);
 }
 
 function escapeHtml(text) {

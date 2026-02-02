@@ -21,7 +21,7 @@
   <!-- Controls -->
   <div class="container mt-4 mb-4">
     <div class="row g-3 align-items-center">
-      <div class="col-md-8">
+      <div class="col-md-6">
         <input
           type="search"
           id="searchInput"
@@ -30,11 +30,18 @@
           aria-label="Projekte durchsuchen"
         >
       </div>
-      <div class="col-md-4">
+      <div class="col-md-3">
         <select id="statusFilter" class="form-select" aria-label="Status filtern">
           <option value="">Alle Projekte</option>
           <option value="aktiv">Aktiv</option>
           <option value="abgeschlossen">Abgeschlossen</option>
+        </select>
+      </div>
+      <div class="col-md-3">
+        <select id="sortOrder" class="form-select" aria-label="Sortierung">
+          <option value="name-asc">Name (A–Z)</option>
+          <option value="name-desc">Name (Z–A)</option>
+          <option value="status">Status</option>
         </select>
       </div>
     </div>
