@@ -3,7 +3,7 @@
 
 const CONFIG = {
   SHEET_ID: '18QHr1QYNfuq4QRieHECApGVnX5oeJDGhO-bzmc3SlB0',
-  API_KEY: 'AIzaSyCxNZinKkwc0l933FzK9GKfzRXEyX8pKu8',
+  API_KEY: '__GOOGLE_SHEETS_API_KEY__', // Replaced at deploy time by GitHub Actions
   SHEET_RANGE: 'Datenbestand!A2:N', // Skip header row
 
   // Column index mapping — update when columns change
