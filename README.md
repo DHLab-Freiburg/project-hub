@@ -76,7 +76,7 @@ See `data-schema.md` for the current column documentation.
 
 ## Methodology
 
-This project was built using the [Promptotyping](https://github.com/DHCraft/promptotyping) methodology. The `.md` files in the repo root document the design decisions:
+This project was built using the [Promptotyping](https://github.com/DigitalHumanitiesCraft/promptotyping-skill) methodology. The `.md` files in the repo root document the design decisions:
 
 - `requirements.md` — goals, features, constraints
 - `data-schema.md` — column mapping and data characteristics
