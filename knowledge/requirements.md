@@ -29,6 +29,14 @@ General public, external researchers.
 | Hosting | GitHub Pages (static) |
 | Search | Client-side full-text (JS) |
 
+## Architecture Decisions
+- Single HTML page, no routing library
+- Overview as default view, detail as Bootstrap modal
+- Fetch sheet data once on page load, cache in memory
+- Search filters the in-memory array (no re-fetch)
+- Filter by "Aktueller Stand" as dropdown
+- Design variants live in `designs/<name>/` with own HTML + CSS, sharing JS via relative paths
+
 ## Constraints
 - Columns will change over time → schema is manually maintained in code
 - Data is incomplete (many empty cells) → UI must handle missing values gracefully

@@ -28,9 +28,13 @@ Project hub frontend for DH Lab Freiburg. Displays project metadata from a Googl
 
 ## Design Docs (Promptotyping)
 
+All in `knowledge/`:
+
 - `requirements.md` — Goals, features, scope
 - `data-schema.md` — Column definitions, data characteristics
-- `design-context.md` — Colors, file structure, API setup
+- `design-a.md` — Design A: colors, file structure, API setup
+- `design-b.md` — Design B: warm editorial theme brief
+- `Datenbestand.csv` — Data snapshot for reference
 
 ## Commands
 

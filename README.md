@@ -18,15 +18,25 @@ Public-facing project hub displaying metadata about all Digital Humanities Lab F
 Static single-page application — vanilla JS, no build step, no framework.
 
 ```
-├── index.html            # Single page
-├── css/style.css         # DH Lab theme + Bootstrap overrides
-├── js/
-│   ├── config.js         # API config + column mapping
-│   ├── api.js            # Google Sheets API fetch
-│   ├── search.js         # Client-side full-text search
-│   └── app.js            # Rendering, filtering, detail modal
+├── index.html              # Design A (dark theme)
+├── css/style.css           # Design A styles
+├── designs/
+│   └── b/                  # Design B (warm editorial theme)
+│       ├── index.html
+│       └── css/style.css
+├── js/                     # Shared application logic
+│   ├── config.js           # API config + column mapping
+│   ├── api.js              # Google Sheets API fetch
+│   ├── search.js           # Client-side full-text search
+│   └── app.js              # Rendering, filtering, detail modal
+├── knowledge/              # Promptotyping docs + reference data
+│   ├── requirements.md     # Goals, features, constraints
+│   ├── data-schema.md      # Column mapping, data characteristics
+│   ├── design-a.md         # Design A: visual identity, architecture
+│   ├── design-b.md         # Design B: warm editorial brief
+│   └── Datenbestand.csv    # Data snapshot for reference
 └── .github/workflows/
-    └── deploy.yml        # GitHub Pages deployment (injects API key)
+    └── deploy.yml          # GitHub Pages deployment (injects API key)
 ```
 
 Data source: [Google Sheet](https://docs.google.com/spreadsheets/d/18QHr1QYNfuq4QRieHECApGVnX5oeJDGhO-bzmc3SlB0)
@@ -72,12 +82,13 @@ When columns change in the Google Sheet, update `js/config.js`:
 - `LABELS` — German display labels for each column
 - `SHEET_RANGE` — adjust if column count changes (e.g. `A2:N` → `A2:P`)
 
-See `data-schema.md` for the current column documentation.
+See `knowledge/data-schema.md` for the current column documentation.
 
 ## Methodology
 
-This project was built using the [Promptotyping](https://github.com/DigitalHumanitiesCraft/promptotyping-skill) methodology. The `.md` files in the repo root document the design decisions:
+This project was built using the [Promptotyping](https://github.com/DigitalHumanitiesCraft/promptotyping-skill) methodology. The `knowledge/` folder contains the design documents:
 
-- `requirements.md` — goals, features, constraints
-- `data-schema.md` — column mapping and data characteristics
-- `design-context.md` — visual identity, file structure, architecture
+- `knowledge/requirements.md` — goals, features, constraints
+- `knowledge/data-schema.md` — column mapping and data characteristics
+- `knowledge/design-a.md` — Design A: visual identity, file structure, architecture
+- `knowledge/design-b.md` — Design B: warm editorial theme brief
